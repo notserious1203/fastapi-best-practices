@@ -1,0 +1,26 @@
+name: Hello World
+
+on:
+  push:
+    branches:
+      - "**"    # trigger on pushes to ANY branch
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Say hello
+        run: echo "Hello! My first GitHub Action is alive."
+
+      - name: Print some context
+        run: |
+          echo "This was triggered by: ${{ github.actor }}"
+          echo "On branch: ${{ github.ref }}"
+          echo "Commit SHA: ${{ github.sha }}"
+
+      - name: Check what tools are available
+        run: |
+          python --version
+          pip --version
+          git --version
